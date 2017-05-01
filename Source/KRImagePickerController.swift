@@ -125,7 +125,7 @@ class KRImagePickerController : NSObject {
         // TODO: Generate random name 
         // If media is taken from camera, set default name. Otherwise, get name
         if imagePicker.sourceType == .camera {
-            return "camera_photo"
+            return "camera_photo" +  (" \(randomAlphaNumericString(8))")
         }
         if let imageURL = info[UIImagePickerControllerReferenceURL] as? URL {
             let result = PHAsset.fetchAssets(withALAssetURLs: [imageURL], options: nil)
@@ -227,5 +227,20 @@ extension KRImagePickerController {
             print("*** Error generating thumbnail: \(error.localizedDescription)")
             return nil
         }
+    }
+    
+    internal func randomAlphaNumericString(_ length: Int) -> String {
+        
+        let allowedChars = "56789"
+        let allowedCharsCount = UInt32(allowedChars.characters.count)
+        var randomString = ""
+        
+        for _ in (0..<length) {
+            let randomNum = Int(arc4random_uniform(allowedCharsCount))
+            let newCharacter = allowedChars[allowedChars.characters.index(allowedChars.startIndex, offsetBy: randomNum)]
+            randomString += String(newCharacter)
+        }
+        
+        return randomString
     }
 }
