@@ -21,7 +21,7 @@ class ViewController: UIViewController {
  
    
     @IBAction func fromCamera(_ sender: Any) {
-        pickFromCamera(type: MediaType.allValues) { [unowned self] result in
+        pickFromCamera(type: [.image]) { [unowned self] result in
             switch result {
             case .success(let media):
                 print("Name \(media.name)")

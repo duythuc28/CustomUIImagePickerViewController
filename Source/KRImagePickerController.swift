@@ -57,15 +57,15 @@ class KRImagePickerController : NSObject {
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = sourceType
-        if type.count > 1 {
-            imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-        } else {
-            if let mediaType = type.first, mediaType == .image {
-                imagePicker.mediaTypes = [kUTTypeImage as String]
-            } else {
-                imagePicker.mediaTypes = [kUTTypeMovie as String]
+        let mediaTypes: [String] = type.map {
+            switch $0 {
+            case .image:
+                return kUTTypeImage as String
+            case .video:
+                return kUTTypeMovie as String
             }
         }
+        imagePicker.mediaTypes = mediaTypes
     }
     
     fileprivate static var imagePickerCompletion : ImageCompletion?
