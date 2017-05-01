@@ -40,7 +40,6 @@ class KRImagePickerController : NSObject {
 
     var imagePicker : UIImagePickerController =  UIImagePickerController()
     
-    
     fileprivate override convenience init() {
         self.init(type:.image, sourceType: .camera)
     }
@@ -203,7 +202,7 @@ class KRImagePickerController : NSObject {
 extension KRImagePickerController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])  {
         // TODO: Get name of image, and video thumbnail as well as video url
-        if picker.mediaTypes == [kUTTypeImage as String] {
+        if let mediaType = info[UIImagePickerControllerMediaType] as? String, mediaType == kUTTypeImage as String {
             didFinishPickingImage(picker: picker, info: info)
         } else {
             didFinishPickingVideo(picker: picker, info: info)
