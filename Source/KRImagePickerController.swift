@@ -144,6 +144,10 @@ class KRImagePickerController : NSObject {
             KRImagePickerController.imagePickerCompletion?(.failure(.errorPickingImage))
             return
         }
+
+        if picker.sourceType == .camera {
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+        }
         DispatchQueue.global(qos: .background).async {
             guard let data = UIImageJPEGRepresentation(image, 0.5) else { return }
             DispatchQueue.main.async { [unowned self] in
@@ -167,7 +171,11 @@ class KRImagePickerController : NSObject {
             KRImagePickerController.imagePickerCompletion?(.failure(.errorPickingVideo))
             return
         }
-       
+        
+        if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(videoURL.path) && picker.sourceType == .camera {
+            UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path, nil, nil, nil)
+        }
+        
         do {
             let data = try Data(contentsOf: videoURL)
             guard let thubmnailImage = thumbnailImage(filePath: videoURL) else {
