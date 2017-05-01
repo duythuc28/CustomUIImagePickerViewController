@@ -15,6 +15,8 @@
 		442F28BF1E93D36E00D2830A /* KRImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F28BE1E93D36E00D2830A /* KRImagePickerController.swift */; };
 		44FDB33C1E9A54C000076334 /* ViewController+KRImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FDB33B1E9A54C000076334 /* ViewController+KRImagePicker.swift */; };
 		6AAAF02F1EB5D04700907568 /* Media.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAAF02E1EB5D04700907568 /* Media.swift */; };
+		6AD3FB0A1EB72C610083EFE2 /* SaveVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD3FB091EB72C610083EFE2 /* SaveVideo.swift */; };
+		6AD3FB0C1EB72CC50083EFE2 /* PhotoLibraryAuthorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AD3FB0B1EB72CC50083EFE2 /* PhotoLibraryAuthorizer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		442F28BE1E93D36E00D2830A /* KRImagePickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KRImagePickerController.swift; path = ../../Source/KRImagePickerController.swift; sourceTree = "<group>"; };
 		44FDB33B1E9A54C000076334 /* ViewController+KRImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ViewController+KRImagePicker.swift"; path = "../../Source/ViewController+KRImagePicker.swift"; sourceTree = "<group>"; };
 		6AAAF02E1EB5D04700907568 /* Media.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Media.swift; sourceTree = "<group>"; };
+		6AD3FB091EB72C610083EFE2 /* SaveVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveVideo.swift; sourceTree = "<group>"; };
+		6AD3FB0B1EB72CC50083EFE2 /* PhotoLibraryAuthorizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoLibraryAuthorizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,7 @@
 		442F28AB1E93D35200D2830A /* KRImagePickerControllerExample */ = {
 			isa = PBXGroup;
 			children = (
+				6AD3FB081EB72C490083EFE2 /* Managers */,
 				6AAAF02D1EB5D03400907568 /* Models */,
 				442F28AC1E93D35200D2830A /* AppDelegate.swift */,
 				442F28AE1E93D35200D2830A /* ViewController.swift */,
@@ -79,6 +84,15 @@
 				6AAAF02E1EB5D04700907568 /* Media.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		6AD3FB081EB72C490083EFE2 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				6AD3FB091EB72C610083EFE2 /* SaveVideo.swift */,
+				6AD3FB0B1EB72CC50083EFE2 /* PhotoLibraryAuthorizer.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +168,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AD3FB0C1EB72CC50083EFE2 /* PhotoLibraryAuthorizer.swift in Sources */,
 				442F28BF1E93D36E00D2830A /* KRImagePickerController.swift in Sources */,
 				44FDB33C1E9A54C000076334 /* ViewController+KRImagePicker.swift in Sources */,
+				6AD3FB0A1EB72C610083EFE2 /* SaveVideo.swift in Sources */,
 				442F28AF1E93D35200D2830A /* ViewController.swift in Sources */,
 				442F28AD1E93D35200D2830A /* AppDelegate.swift in Sources */,
 				6AAAF02F1EB5D04700907568 /* Media.swift in Sources */,

@@ -12,7 +12,7 @@ import UIKit
 
 extension UIViewController {
     
-    func pickFromPhotoLibrary(type: MediaType, completion : @escaping ImageCompletion) {
+    func pickFromPhotoLibrary(type: [MediaType], completion : @escaping ImageCompletion) {
         KRImagePickerController.pick(from: self, sourceType: .photoLibrary, mediaType: type, completion: completion)
     }
     
@@ -24,7 +24,7 @@ extension UIViewController {
         KRImagePickerController.pick(from: self, sourceType: .camera, completion: completion)
     }
     
-    func pickFromCamera(type: MediaType, completion : @escaping ImageCompletion) {
+    func pickFromCamera(type: [MediaType], completion : @escaping ImageCompletion) {
         KRImagePickerController.pick(from: self, sourceType: .camera, mediaType: type, completion: completion)
     }
     

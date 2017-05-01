@@ -26,15 +26,14 @@ struct Media {
 }
 
 enum MediaType: CustomStringConvertible {
-    case image, video, all
+    case image, video
     var description: String {
         switch self {
         case .image:
             return "IMAGE"
         case .video:
             return "VIDEO"
-        case .all:
-            return "ALL"
         }
     }
+    static let allValues = [image, video]
 }

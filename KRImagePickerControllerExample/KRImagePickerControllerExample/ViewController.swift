@@ -21,7 +21,7 @@ class ViewController: UIViewController {
  
    
     @IBAction func fromCamera(_ sender: Any) {
-        pickFromCamera(type: .all) { [unowned self] result in
+        pickFromCamera(type: MediaType.allValues) { [unowned self] result in
             switch result {
             case .success(let media):
                 print("Name \(media.name)")
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func fromPhotoLibrary(_ sender: Any) {
-        pickFromPhotoLibrary(type: .all) { [unowned self] result in
+        pickFromPhotoLibrary(type: MediaType.allValues) { [unowned self] result in
             switch result {
             case .success(let media):
                 // Get media here

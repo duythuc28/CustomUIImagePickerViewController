@@ -41,7 +41,7 @@ class KRImagePickerController : NSObject {
     var imagePicker : UIImagePickerController =  UIImagePickerController()
     
     fileprivate override convenience init() {
-        self.init(type:.image, sourceType: .camera)
+        self.init(type:[.image], sourceType: .camera)
     }
     
     fileprivate init(sourceType : UIImagePickerControllerSourceType) {
@@ -52,21 +52,19 @@ class KRImagePickerController : NSObject {
         imagePicker.mediaTypes = [kUTTypeImage as String]
     }
     
-    fileprivate init(type: MediaType, sourceType : UIImagePickerControllerSourceType) {
+    fileprivate init(type: [MediaType], sourceType : UIImagePickerControllerSourceType) {
         super.init()
         imagePicker.delegate = self
         imagePicker.allowsEditing = false
         imagePicker.sourceType = sourceType
-        switch type {
-        case .image:
-            imagePicker.mediaTypes = [kUTTypeImage as String]
-            break
-        case .video:
-            imagePicker.mediaTypes = [kUTTypeMovie as String]
-            break
-        case .all:
+        if type.count > 1 {
             imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-            break
+        } else {
+            if let mediaType = type.first, mediaType == .image {
+                imagePicker.mediaTypes = [kUTTypeImage as String]
+            } else {
+                imagePicker.mediaTypes = [kUTTypeMovie as String]
+            }
         }
     }
     
@@ -86,7 +84,7 @@ class KRImagePickerController : NSObject {
     }
     
     
-    class func pick(from viewController : UIViewController, sourceType : UIImagePickerControllerSourceType, mediaType: MediaType = .image ,completion : @escaping ImageCompletion) {
+    class func pick(from viewController : UIViewController, sourceType : UIImagePickerControllerSourceType, mediaType: [MediaType] = [.image] ,completion : @escaping ImageCompletion) {
         guard UIImagePickerController.isSourceTypeAvailable(sourceType) else {
             completion(.failure(errorForUnavailableSourceType(sourceType: sourceType)))
             return
@@ -111,7 +109,7 @@ class KRImagePickerController : NSObject {
         }
     }
     
-    fileprivate class func getImagePickerController(sourceType: UIImagePickerControllerSourceType, mediaType: MediaType) -> KRImagePickerController? {
+    fileprivate class func getImagePickerController(sourceType: UIImagePickerControllerSourceType, mediaType: [MediaType]) -> KRImagePickerController? {
         guard let imagePicker = imagePickerController else {
             imagePickerController = KRImagePickerController(type: mediaType, sourceType: sourceType)
             return imagePickerController
@@ -124,7 +122,7 @@ class KRImagePickerController : NSObject {
     }
     
     fileprivate func mediaName(info: [String: Any]) -> String {
-        // TODO: Get media name here
+        // TODO: Generate random name 
         // If media is taken from camera, set default name. Otherwise, get name
         if imagePicker.sourceType == .camera {
             return "camera_photo"
